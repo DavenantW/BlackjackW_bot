@@ -1,19 +1,17 @@
 import { Telegraf } from 'telegraf';
 import { glob } from 'glob';
+import importFile from '../utils/importFile.js';
 
 class Bot {
   constructor(token) {
     this.bot = new Telegraf(token);
   }
 
-  async importFile(filePath) {
-    return (await import(filePath))?.default;
-  }
-
   async registerCommands() {
     const commandFiles = await glob('commands/**/*.js');
+    console.log(commandFiles);
     commandFiles.forEach(async (filePath) => {
-      const command = await this.importFile(`../${filePath}`);
+      const command = await importFile(`../${filePath}`);
       if (!command.name) return;
       command.initCommand(this.bot);
       console.log(command);
