@@ -13,7 +13,7 @@ class Bot {
   async registerCommands() {
     const commandFiles = await glob('commands/**/*.js');
     commandFiles.forEach(async (filePath) => {
-      const command = await this.importFile(filePath);
+      const command = await this.importFile(`../${filePath}`);
       if (!command.name) return;
       command.initCommand(this.bot);
       console.log(command);
