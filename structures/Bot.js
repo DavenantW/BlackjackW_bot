@@ -19,4 +19,13 @@ class Bot {
       console.log(command);
     });
   }
+
+  async start() {
+    await this.registerCommands();
+    this.bot.launch();
+    process.once('SIGINT', () => this.bot.stop('SIGINT'));
+    process.once('SIGTERM', () => this.bot.stop('SIGTERM'));
+  }
 }
+
+export default Bot;
