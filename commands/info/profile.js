@@ -17,7 +17,7 @@ export default new Command('profile', (ctx) => {
       <b>Ваш профиль</b>
 
 <b>Имя:</b> ${profile.name}
-<b>Баланс:</b> ${profile.balance}
+<b>Баланс:</b> ${profile.balance} фишек
 <b>Рефералов:</b> ${profile.referrals}
 <b>Игр сыграно:</b> ${profile.gamesPlayed}
 <b>Максимальная ставка:</b> ${profile.maxRate}
