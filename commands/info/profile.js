@@ -1,18 +1,10 @@
+import fetch from 'node-fetch';
 import Command from '../../structures/Command.js';
 
-const profile = {
-  name: 'Artem',
-  balance: 50,
-  referrals: 2,
-  gamesPlayed: 156,
-  maxRate: 200,
-  averageWin: 70,
-  victory: 110,
-  blackJack: 6,
-};
-
-export default new Command('profile', (ctx) => {
+export default new Command('profile', async (ctx) => {
   try {
+    const profile = fetch('https://blackjackw.com/profile');
+
     ctx.replyWithHTML(`
       <b>Ваш профиль</b>
 
@@ -25,7 +17,7 @@ export default new Command('profile', (ctx) => {
 <b>Побед:</b> ${profile.victory}
 <b>BlackJack:</b> ${profile.blackJack}
       `);
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 });
