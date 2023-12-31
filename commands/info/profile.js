@@ -17,7 +17,7 @@ export default new Command('profile', async (ctx) => {
 <b>Побед:</b> ${profile.victory}
 <b>BlackJack:</b> ${profile.blackJack}
       `);
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 });
